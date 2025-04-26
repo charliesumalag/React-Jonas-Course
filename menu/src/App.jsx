@@ -1,8 +1,10 @@
 import './App.css';
 import React from "react";
+import PizzaList from './data.js';
+
+
 
 function App() {
-
   return (
     <div className="container">
       <Header />
@@ -10,13 +12,26 @@ function App() {
     </div>
   )
 }
+
+
 // Components
-function Pizza() {
+
+function Menu() {
+  return (
+    <main className='menu'>
+      <h2>Our Menu</h2>
+      {PizzaList.map(pizza => {
+        return ( <Pizza name={pizza.name} ingredient={pizza.ingredients} photoName= {pizza.photoName} price={pizza.price} /> );
+    })}
+  </main>
+  )
+}
+function Pizza(props) {
     return (
       <div>
-        <img src="pizzas/spinaci.jpg" alt="" />
-        <h3>Pizza Spinacci</h3>
-        <p>Tomtato, mozarella, spinach, and ricotta cheese</p>
+        <img src={props.photoName} alt={props.name} />
+        <h3>{props.name}</h3>
+        <p>{props.ingredient}</p>
         <Footer />
       </div>
   )
@@ -29,16 +44,7 @@ function Header() {
     </header>
   )
 }
-function Menu() {
-  return (
-    <main className='menu'>
-      <h2>Our Menu</h2>
-      <Pizza/>
-      <Pizza/>
-      <Pizza/>
-  </main>
-  )
-}
+
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
