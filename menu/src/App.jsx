@@ -1,20 +1,58 @@
 import './App.css';
+import './challengeone.css';
 import React from "react";
 import PizzaList from './data.js';
 
 
 
+
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <Menu/>
-    </div>
+    // <div className="container">
+    //   <Header />
+    //   <Menu/>
+    // </div>
+    // Challenge #1: Profile Card version 1
+    <ChallengeOne img='avatar.jpg' />
   )
 }
 
 
 // Components
+function ChallengeOne(props) {
+  return (
+    <div className='card'>
+      <Avatar img={props.img} />
+
+      <div className='data'>
+        <h1>Charlie Sumalag</h1>
+        <Intro text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptatum libero ipsam, omnis, aut molestias nihil vitae in obcaecati soluta recusandae quibusdam quae! Maiores voluptates quidem dolores officiis ea dolore.' />
+        <Skills skills={['html', 'css' ,'javascript', 'php' ,'laravel' ,'react' , 'nextjs']}/>
+      </div>
+    </div>
+  );
+}
+function Avatar(props) {
+  return (
+    <div className='avatar'>
+      <img src={props.img} alt="" className='' />
+    </div>
+  )
+}
+function Intro(props) {
+  return (
+    <p>{props.text}</p>
+  )
+}
+function Skills({skills}) {
+  return (
+    <div className='skill-list'>
+      {skills.map(skills => (
+        <p className='skill skillbg'>{skills}</p>
+      ))}
+    </div>
+)
+}
 
 function Menu() {
   return (
